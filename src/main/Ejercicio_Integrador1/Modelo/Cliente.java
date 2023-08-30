@@ -5,6 +5,12 @@ public class Cliente {
     private String nombre;
     private String email;
 
+    public Cliente(int id, String nombre, String email){
+        this.idCliente = id;
+        this.nombre = nombre;
+        this.email = email;
+    }
+
     public int getIdCliente() {
         return idCliente;
     }
@@ -27,5 +33,14 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "idCliente=" + idCliente +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                '}' + '\n';
     }
 }

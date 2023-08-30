@@ -10,4 +10,7 @@ public interface DAO<T>{
     public List getAll();
     public void crearTabla();
 
+    public void generarDatos(String path);
+
+
 }
