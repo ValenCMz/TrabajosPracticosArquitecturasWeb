@@ -39,21 +39,6 @@ public class MySQLFacturaDAO implements FacturaDAO {
     }
 
     @Override
-    public void update(Factura d) {
-
-    }
-
-    @Override
-    public void delete(Factura d) {
-
-    }
-
-    @Override
-    public ArrayList getAll() {
-        return null;
-    }
-
-    @Override
     public void crearTabla() {
 
         String create =

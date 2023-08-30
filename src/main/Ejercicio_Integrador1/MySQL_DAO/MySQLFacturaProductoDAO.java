@@ -40,21 +40,6 @@ public class MySQLFacturaProductoDAO implements FacturaProductoDAO {
     }
 
     @Override
-    public void update(Factura_Producto d) {
-
-    }
-
-    @Override
-    public void delete(Factura_Producto d) {
-
-    }
-
-    @Override
-    public ArrayList getAll() {
-        return null;
-    }
-
-    @Override
     public void crearTabla() {
         String create = "CREATE TABLE IF NOT EXISTS factura_producto("+ "idFactura INT,"
                 + "idProducto int,"+ "cantidad int," +

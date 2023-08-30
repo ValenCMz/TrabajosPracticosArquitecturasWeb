@@ -40,22 +40,6 @@ public class MySQLClienteDAO implements ClienteDAO {
     }
 
     @Override
-    public void update(Cliente d) {
-
-    }
-
-    @Override
-    public void delete(Cliente d) {
-
-    }
-
-    @Override
-    public ArrayList getAll() {
-        return null;
-    }
-
-
-    @Override
     public void crearTabla() {
 
         String create = "CREATE TABLE IF NOT EXISTS cliente("+ "idCliente INT,"

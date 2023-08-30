@@ -22,8 +22,8 @@ public class Main {
         //df.getFacturaDAO().generarDatos("src/main/Ejercicio_Integrador1/facturas.csv");
         //df.getFacturaProductoDAO().generarDatos("src/main/Ejercicio_Integrador1/facturas-productos.csv");
 
-        // System.out.println(df.getProductoDAO().getProductoMasRecaudo());
-        System.out.println(df.getClienteDAO().getClientes());
+         System.out.println(df.getProductoDAO().getProductoMasRecaudo());
+        //System.out.println(df.getClienteDAO().getClientes());
 
     }
 }

@@ -35,20 +35,6 @@ public class MySQLProductoDAO implements ProductoDAO {
         }
     }
 
-    @Override
-    public void update(Producto d) {
-
-    }
-
-    @Override
-    public void delete(Producto d) {
-
-    }
-
-    @Override
-    public ArrayList getAll() {
-        return null;
-    }
 
     @Override
     public void crearTabla() {
