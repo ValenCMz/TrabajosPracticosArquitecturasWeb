@@ -28,6 +28,7 @@ public class MySQLFacturaProductoDAO implements FacturaProductoDAO {
     public void insert(Factura_Producto d) {
         String sentence = "INSERT INTO factura_producto (idFactura,idProducto,cantidad) VALUES(?,?,?)";
         try {
+            conn.setAutoCommit(false);
             PreparedStatement ps = conn.prepareStatement(sentence);
             ps.setInt(1,d.getIdFactura());
             ps.setInt(2,d.getIdProducto());
@@ -39,21 +40,7 @@ public class MySQLFacturaProductoDAO implements FacturaProductoDAO {
         }
     }
 
-    @Override
-    public void crearTabla() {
-        String create = "CREATE TABLE IF NOT EXISTS factura_producto("+ "idFactura INT,"
-                + "idProducto int,"+ "cantidad int," +
-                "PRIMARY KEY(idFactura,idProducto),"+
-        "FOREIGN KEY(idFactura) REFERENCES factura(idFactura),"+
-        "FOREIGN KEY(idProducto)REFERENCES producto(idProducto))";
-        try {
-            conn.setAutoCommit(false);
-            conn.prepareStatement(create).execute();
-            conn.commit();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
+
 
     @Override
     public void generarDatos(String path) {

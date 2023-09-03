@@ -6,8 +6,6 @@ public interface DAO<T>{
     //	CRUD
     public void insert(T d);
 
-    public void crearTabla();
-
     public void generarDatos(String path);
 
 

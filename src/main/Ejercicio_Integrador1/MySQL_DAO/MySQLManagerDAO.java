@@ -26,6 +26,9 @@ public class MySQLManagerDAO extends DAOFactory {
         }
     }
 
+    public Connection getConexion(){
+        return conn;
+    }
 
     @Override
     public ClienteDAO getClienteDAO() {

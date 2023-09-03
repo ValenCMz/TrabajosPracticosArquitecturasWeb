@@ -28,27 +28,11 @@ public class MySQLFacturaDAO implements FacturaDAO {
     public void insert(Factura d) {
         String sentence = "INSERT INTO factura (idFactura,idCliente) VALUES(?,?)";
         try {
+            conn.setAutoCommit(false);
             PreparedStatement ps = conn.prepareStatement(sentence);
             ps.setInt(1,d.getIdFactura());
             ps.setInt(2,d.getIdCliente());
             ps.executeUpdate();
-            conn.commit();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public void crearTabla() {
-
-        String create =
-               " CREATE TABLE IF NOT EXISTS factura(" + "idFactura INT,"+
-                "idCLiente int,"+
-                "PRIMARY KEY(idFactura),"+
-                "FOREIGN KEY (idCliente) REFERENCES cliente(idCliente))";
-        try {
-            conn.setAutoCommit(false);
-            conn.prepareStatement(create).execute();
             conn.commit();
         } catch (SQLException e) {
             throw new RuntimeException(e);
