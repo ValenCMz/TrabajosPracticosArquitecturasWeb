@@ -26,10 +26,10 @@ public class Main {
         Carrera carrera = new Carrera("Tudai");
         ciudadRepositorio.addCiudad(c1);
         Estudiante estudiante = new Estudiante(1, "Valentin", "Caminos", 22, 'M', 43512842, c1);
-
-        estudianteRepositorio.matricularEstudianteACarrera(1,2);
         carreraRepositorio.addCarrera(carrera);
         estudianteRepositorio.darDeAltaEstudiante(estudiante);
+        estudianteRepositorio.matricularEstudianteACarrera(1,2);
+
 
 
         em.close();

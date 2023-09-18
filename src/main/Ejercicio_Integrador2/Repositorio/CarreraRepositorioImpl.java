@@ -4,6 +4,7 @@ import main.Ejercicio_Integrador2.Modelo.Carrera;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 
 @Repository
 public class CarreraRepositorioImpl implements CarreraRepositorio{
@@ -16,6 +17,7 @@ public class CarreraRepositorioImpl implements CarreraRepositorio{
 
 
     @Override
+    @Transactional
     public void addCarrera(Carrera c) {
         em.getTransaction().begin();
         em.persist(c);

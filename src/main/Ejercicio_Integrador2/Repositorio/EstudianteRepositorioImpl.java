@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.transaction.Transactional;
 
 @Repository
 public class EstudianteRepositorioImpl implements EstudianteRepositorio{
@@ -18,6 +19,7 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
     }
 
     @Override
+    @Transactional
     public void darDeAltaEstudiante(Estudiante e) {
         em.getTransaction().begin();
 
@@ -31,6 +33,7 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
     }
 
     @Override
+    @Transactional
     public void matricularEstudianteACarrera(int estudianteId, int carreraId) {
         Estudiante estudiante = this.getEstudianteById(estudianteId);
         Carrera carrera = em.find(Carrera.class, carreraId);
@@ -38,6 +41,10 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
         if(estudiante!=null && carrera!=null){
             estudiante.getCarreras().add(carrera);
             carrera.getEstudiantes().add(estudiante);
+            em.getTransaction().begin();
+            em.persist(estudiante);
+            em.persist(carrera);
+            em.getTransaction().commit();
         }
     }
 }

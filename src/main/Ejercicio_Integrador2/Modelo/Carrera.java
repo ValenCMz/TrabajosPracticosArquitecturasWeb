@@ -16,7 +16,7 @@ public class Carrera {
     @ManyToMany
     @JoinTable(
             name = "carrera_estudiante",
-            joinColumns = @JoinColumn(name = "id_carrera"),
+            joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "numeroDeLibretaUniversitaria")
     )
     private List<Estudiante>estudiantes;
