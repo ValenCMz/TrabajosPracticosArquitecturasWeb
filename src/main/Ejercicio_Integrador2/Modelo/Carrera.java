@@ -1,7 +1,6 @@
 package main.Ejercicio_Integrador2.Modelo;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,18 +12,13 @@ public class Carrera {
     @Column
     private String nombre;
 
-    @ManyToMany
-    @JoinTable(
-            name = "carrera_estudiante",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "numeroDeLibretaUniversitaria")
-    )
-    private List<Estudiante>estudiantes;
+    @OneToMany(mappedBy = "carrera")
+    private List<Carrera> estudiantes;
+
+
 
     public Carrera(String nombre) {
-
         this.nombre = nombre;
-        this.estudiantes = new ArrayList<>();
     }
 
     public Carrera() {
@@ -45,13 +39,5 @@ public class Carrera {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public List<Estudiante> getEstudiantes() {
-        return estudiantes;
-    }
-
-    public void setEstudiantes(List<Estudiante> estudiantes) {
-        this.estudiantes = estudiantes;
     }
 }

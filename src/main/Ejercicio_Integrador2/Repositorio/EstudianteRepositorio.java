@@ -9,7 +9,7 @@ public interface EstudianteRepositorio {
 
     public void darDeAltaEstudiante(Estudiante e);
 
-    public void matricularEstudianteACarrera(int estudianteId, int carreraId);
+    //public void matricularEstudianteACarrera(int estudianteId, int carreraId);
 
     public List<EstudianteDTO> getEstudiantesDTOOrdenados();
 

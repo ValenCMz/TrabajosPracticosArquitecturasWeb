@@ -8,7 +8,7 @@
 
         <class>main.Ejercicio_Integrador2.Modelo.Estudiante</class>
         <class>main.Ejercicio_Integrador2.Modelo.Carrera</class>
-        <class>main.Ejercicio_Integrador2.Modelo.Ciudad</class>
+        <class>main.Ejercicio_Integrador2.Modelo.EstudianteCarrera</class>
 
 
 

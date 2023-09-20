@@ -1,15 +1,11 @@
 package main.Ejercicio_Integrador2.Repositorio;
 
-import main.Ejercicio_Integrador2.DTO.CarreraDTO;
-import main.Ejercicio_Integrador2.DTO.CiudadDTO;
 import main.Ejercicio_Integrador2.DTO.EstudianteDTO;
 import main.Ejercicio_Integrador2.Modelo.Carrera;
 import main.Ejercicio_Integrador2.Modelo.Estudiante;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +33,7 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
         return em.find(Estudiante.class,id);
     }
 
-    @Override
+    /*@Override
     @Transactional
     public void matricularEstudianteACarrera(int estudianteId, int carreraId) {
         Estudiante estudiante = this.getEstudianteById(estudianteId);
@@ -51,7 +47,7 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
             em.persist(carrera);
             em.getTransaction().commit();
         }
-    }
+    }*/
 
 
     @Override
@@ -60,9 +56,9 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
         List<EstudianteDTO>toReturn = new ArrayList<>();
         List<String>carreras = new ArrayList<>();
         for(Estudiante e :estudiantes){
-            for(Carrera c : e.getCarreras()){
-                carreras.add(c.getNombre());
-            }
+           // for(Carrera c : e.getCarreras()){
+           //     carreras.add(c.getNombre());
+            //}
         }
 
         for(Estudiante e : estudiantes) {
@@ -76,9 +72,9 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
     public EstudianteDTO getEstudianteDTOByNumeroDeLibreta(int libreta) {
         Estudiante estudiante = em.find(Estudiante.class,libreta);
         List<String>carreras = new ArrayList<>();
-        for(Carrera c : estudiante.getCarreras()){
-            carreras.add(c.getNombre());
-        }
+        //for(Carrera c : estudiante.getCarreras()){
+          //  carreras.add(c.getNombre());
+        //}
 
         return new EstudianteDTO(estudiante.getNumeroDeLibretaUniversitaria(),estudiante.getNombre() + " " +estudiante.getApellido(), estudiante.getEdad(),carreras);
     }
@@ -89,9 +85,9 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
         List<EstudianteDTO>toReturn = new ArrayList<>();
         List<String>carreras = new ArrayList<>();
         for(Estudiante e :estudiantes){
-            for(Carrera c : e.getCarreras()){
-                carreras.add(c.getNombre());
-            }
+            //for(Carrera c : e.getCarreras()){
+              //  carreras.add(c.getNombre());
+            //}
         }
 
         for(Estudiante e : estudiantes) {
@@ -103,18 +99,18 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
 
     @Override
     public List<EstudianteDTO> getEstudiantesPorCarreraPorCiudad(int id_carrera, String ciudad) {
-        List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e JOIN e.carreras e2 WHERE e.ciudadDeResidencia.nombre = :ciudad AND e2.id = :id_carrera",Estudiante.class).setParameter("ciudad",ciudad).setParameter("id_carrera",id_carrera).getResultList();
+        //List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e JOIN e.carreras e2 WHERE e.ciudadDeResidencia.nombre = :ciudad AND e2.id = :id_carrera",Estudiante.class).setParameter("ciudad",ciudad).setParameter("id_carrera",id_carrera).getResultList();
         List<EstudianteDTO>toReturn = new ArrayList<>();
         List<String>carreras = new ArrayList<>();
-        for(Estudiante e :estudiantes){
-            for(Carrera c : e.getCarreras()){
-                carreras.add(c.getNombre());
-            }
-        }
+        //for(Estudiante e :estudiantes){
+            //for(Carrera c : e.getCarreras()){
+              //  carreras.add(c.getNombre());
+            //}
+       // }
 
-        for(Estudiante e : estudiantes) {
-            toReturn.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre() + e.getApellido(),e.getEdad(),carreras));
-        }
+        //for(Estudiante e : estudiantes) {
+          //  toReturn.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre() + e.getApellido(),e.getEdad(),carreras));
+        //}
 
         return toReturn;
 

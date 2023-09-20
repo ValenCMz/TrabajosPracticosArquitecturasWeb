@@ -31,18 +31,18 @@ public class CarreraRepositorioImpl implements CarreraRepositorio{
 
     @Override
     public List<CarreraDTO> getCarrerasConEstudiantesOrdenadosPorCantidadDeInscriptos() {
-        List<Carrera>carreras = em.createQuery("SELECT c FROM Carrera c WHERE c.estudiantes.size != 0 ORDER BY c.estudiantes.size").getResultList();
+        //List<Carrera>carreras = em.createQuery("SELECT c FROM Carrera c WHERE c.estudiantes.size != 0 ORDER BY c.estudiantes.size").getResultList();
         List<CarreraDTO>toReturn = new ArrayList<>();
         List<EstudianteDTO>estudianteDTOS = new ArrayList<>();
-        for(Carrera c : carreras){
-            for(Estudiante e : c.getEstudiantes()){
-                estudianteDTOS.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre(),e.getEdad()));
-            }
-        }
+        //for(Carrera c : carreras){
+            //for(Estudiante e : c.getEstudiantes()){
+             //   estudianteDTOS.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre(),e.getEdad()));
+           // }
+       // }
 
-        for(Carrera c : carreras){
-            toReturn.add(new CarreraDTO(c.getId(),c.getNombre(),estudianteDTOS));
-        }
+        //for(Carrera c : carreras){
+       //    toReturn.add(new CarreraDTO(c.getId(),c.getNombre(),estudianteDTOS));
+        //}
 
         return toReturn;
     }

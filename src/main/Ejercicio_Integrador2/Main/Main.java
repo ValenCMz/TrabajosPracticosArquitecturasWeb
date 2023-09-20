@@ -2,52 +2,55 @@ package main.Ejercicio_Integrador2.Main;
 
 import main.Ejercicio_Integrador2.Factory.Factory;
 import main.Ejercicio_Integrador2.Modelo.Carrera;
-import main.Ejercicio_Integrador2.Modelo.Ciudad;
 import main.Ejercicio_Integrador2.Modelo.Estudiante;
-import main.Ejercicio_Integrador2.Repositorio.CarreraRepositorioImpl;
-import main.Ejercicio_Integrador2.Repositorio.CiudadRepositorioImpl;
-import main.Ejercicio_Integrador2.Repositorio.EstudianteRepositorio;
-import main.Ejercicio_Integrador2.Repositorio.EstudianteRepositorioImpl;
+import main.Ejercicio_Integrador2.Repositorio.*;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[]args) {
+    public static void main(String[]args)  {
         EntityManager em = Factory.getEntityManagerSQL();
 
-        EstudianteRepositorioImpl estudianteRepositorio = new EstudianteRepositorioImpl(em);
-        CiudadRepositorioImpl ciudadRepositorio = new CiudadRepositorioImpl(em);
-        CarreraRepositorioImpl carreraRepositorio = new CarreraRepositorioImpl(em);
+        EstudianteRepositorioImpl estudianteRepositorio = Factory.getEstudianteRepositorio();
+        CarreraRepositorioImpl carreraRepositorio = Factory.getCarreraRepositorio();
 
-/*
-        Ciudad c1 = new Ciudad("Tandil");
-        Carrera carrera = new Carrera("Tudai");
-        Carrera carrera1 = new Carrera("sin estudiantes");
-        ciudadRepositorio.addCiudad(c1);
-        Estudiante estudiante = new Estudiante(1, "Valentin", "Caminos", 22, 'M', 43512842, c1);
-        Estudiante estudiante1 = new Estudiante(2,"jose","asas",33, 'F',2133213,c1);
-        carreraRepositorio.addCarrera(carrera);
-        carreraRepositorio.addCarrera(carrera1);
-        estudianteRepositorio.darDeAltaEstudiante(estudiante1);
-        estudianteRepositorio.darDeAltaEstudiante(estudiante);
-        estudianteRepositorio.matricularEstudianteACarrera(1,1);
+        CSVParser parser = null;
+        try {
+            parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/carreras.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for(CSVRecord row: parser) {
+            carreraRepositorio.addCarrera(new Carrera(row.get("carrera")));
+        }
+        try {
+            parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/estudiantes.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for (CSVRecord row: parser){
+            estudianteRepositorio.darDeAltaEstudiante(new Estudiante(Integer.valueOf(row.get("LU")),row.get("nombre"),row.get("apellido"),Integer.valueOf(row.get("edad")),row.get("genero"),Integer.valueOf(row.get("DNI")),row.get("ciudad")));
+        }/*
+        try {
+            parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/estudianteCarrera.csv"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for (CSVRecord row: parser){
+            estudianteRepositorio.matricularEstudianteACarrera(Integer.valueOf(row.get("id_estudiante")),Integer.valueOf(row.get(("id_carrera"))));
+        }*/
 
- */
-
-
-
-   /*
-        System.out.println(estudianteRepositorio.getEstudiantesDTOOrdenados());
+        /*System.out.println(estudianteRepositorio.getEstudiantesDTOOrdenados());
         System.out.println(estudianteRepositorio.getEstudianteDTOByNumeroDeLibreta(1));
         System.out.println(estudianteRepositorio.getEstudiantesPorGenero('M'));
 
-    */
-
-        //    System.out.println(carreraRepositorio.getCarrerasConEstudiantesOrdenadosPorCantidadDeInscriptos());
-
-        System.out.println(estudianteRepositorio.getEstudiantesPorCarreraPorCiudad(1,"asdas"));
+        System.out.println(carreraRepositorio.getCarrerasConEstudiantesOrdenadosPorCantidadDeInscriptos());
+        System.out.println(estudianteRepositorio.getEstudiantesPorCarreraPorCiudad(1,"asdas"));*/
 
 
         em.close();

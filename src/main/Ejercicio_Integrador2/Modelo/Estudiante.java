@@ -20,19 +20,18 @@ public class Estudiante {
     private int edad;
 
     @Column
-    private char genero;
+    private String genero;
 
     @Column
     private int numeroDeDocumento;
 
-    @ManyToOne
-    private Ciudad ciudadDeResidencia;
+    private String ciudadDeResidencia;
 
     @ManyToMany(mappedBy = "estudiantes")
     private List<Carrera>carreras;
 
 
-    public Estudiante(int numeroDeLibretaUniversitaria, String nombre, String apellido, int edad, char genero, int numeroDeDocumento, Ciudad ciudadDeResidencia) {
+    public Estudiante(int numeroDeLibretaUniversitaria, String nombre, String apellido, int edad, String genero, int numeroDeDocumento, String ciudadDeResidencia) {
         this.numeroDeLibretaUniversitaria = numeroDeLibretaUniversitaria;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -79,11 +78,11 @@ public class Estudiante {
         this.edad = edad;
     }
 
-    public char getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(char genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 
@@ -95,11 +94,11 @@ public class Estudiante {
         this.numeroDeDocumento = numeroDeDocumento;
     }
 
-    public Ciudad getCiudadDeResidencia() {
+    public String getCiudadDeResidencia() {
         return ciudadDeResidencia;
     }
 
-    public void setCiudadDeResidencia(Ciudad ciudadDeResidencia) {
+    public void setCiudadDeResidencia(String ciudadDeResidencia) {
         this.ciudadDeResidencia = ciudadDeResidencia;
     }
 
