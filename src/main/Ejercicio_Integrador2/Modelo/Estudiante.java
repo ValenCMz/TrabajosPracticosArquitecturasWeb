@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 public class Estudiante {
-    @Id
+    @Column
     private int numeroDeLibretaUniversitaria;
 
     @Column
@@ -22,13 +22,13 @@ public class Estudiante {
     @Column
     private String genero;
 
-    @Column
+    @Id
     private int numeroDeDocumento;
 
     private String ciudadDeResidencia;
 
-    @ManyToMany(mappedBy = "estudiantes")
-    private List<Carrera>carreras;
+    @OneToMany(mappedBy = "estudiante")
+    private List<EstudianteCarrera> carreras;
 
 
     public Estudiante(int numeroDeLibretaUniversitaria, String nombre, String apellido, int edad, String genero, int numeroDeDocumento, String ciudadDeResidencia) {
@@ -102,11 +102,11 @@ public class Estudiante {
         this.ciudadDeResidencia = ciudadDeResidencia;
     }
 
-    public List<Carrera> getCarreras() {
+    public List<EstudianteCarrera> getCarreras() {
         return carreras;
     }
 
-    public void setCarreras(List<Carrera> carreras) {
+    public void setCarreras(List<EstudianteCarrera> carreras) {
         this.carreras = carreras;
     }
 }

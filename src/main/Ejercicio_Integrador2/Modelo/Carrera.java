@@ -13,7 +13,7 @@ public class Carrera {
     private String nombre;
 
     @OneToMany(mappedBy = "carrera")
-    private List<Carrera> estudiantes;
+    private List<EstudianteCarrera> estudiantes;
 
 
 

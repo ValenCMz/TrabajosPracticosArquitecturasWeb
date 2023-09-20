@@ -5,26 +5,26 @@ import javax.persistence.*;
 @Entity
 public class EstudianteCarrera {
 
-    @Id
+    @EmbeddedId
+    private CarreraEstudianteKey id;
+
     @ManyToOne
-    @JoinColumn(
-            name = "id"
-    )
-    private Carrera idCarrera;
-    @Id
+    @MapsId("carreraId")
+    @JoinColumn(name = "carrera_id")
+    private Carrera carrera;
+
     @ManyToOne
-    @JoinColumn(
-            name = "numeroDeDocumento"
-    )
-    private Estudiante idEstudiante;
+    @MapsId("estudianteId")
+    @JoinColumn(name = "estudiante_id")
+    private Estudiante estudiante;
     @Column
     private int antiguedad;
     @Column
     private boolean esGraduado;
 
     public EstudianteCarrera(Carrera idCarrera, Estudiante idEstudiante, int antiguedad, boolean esGraduado) {
-        this.idCarrera = idCarrera;
-        this.idEstudiante = idEstudiante;
+        this.carrera = idCarrera;
+        this.estudiante = idEstudiante;
         this.antiguedad = antiguedad;
         this.esGraduado = esGraduado;
     }

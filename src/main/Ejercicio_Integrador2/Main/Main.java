@@ -9,8 +9,6 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import javax.persistence.EntityManager;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class Main {
     public static void main(String[]args)  {
@@ -18,7 +16,7 @@ public class Main {
 
         EstudianteRepositorioImpl estudianteRepositorio = Factory.getEstudianteRepositorio();
         CarreraRepositorioImpl carreraRepositorio = Factory.getCarreraRepositorio();
-
+        /*
         CSVParser parser = null;
         try {
             parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/carreras.csv"));
