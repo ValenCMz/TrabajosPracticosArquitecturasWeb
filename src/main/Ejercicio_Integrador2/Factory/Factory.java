@@ -11,6 +11,7 @@ public class Factory {
     private static EntityManagerFactory emf;
     private static CarreraRepositorioImpl carreraRepositorio;
     private static EstudianteRepositorioImpl estudianteRepositorio;
+    private static EstudianteCarreraRepositorioImpl estudianteCarreraRepositorio;
     public static EntityManager getEntityManagerSQL(){
         if(emf==null){
             emf = Persistence.createEntityManagerFactory("Example");
@@ -28,5 +29,12 @@ public class Factory {
             estudianteRepositorio = new EstudianteRepositorioImpl(Factory.getEntityManagerSQL());
         }
         return estudianteRepositorio;
+    }
+
+    public static EstudianteCarreraRepositorioImpl getEstudianteCarreraRepositorio(){
+        if (estudianteCarreraRepositorio == null){
+            estudianteCarreraRepositorio = new EstudianteCarreraRepositorioImpl(Factory.getEntityManagerSQL());
+        }
+        return estudianteCarreraRepositorio;
     }
 }

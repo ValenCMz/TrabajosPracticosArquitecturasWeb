@@ -20,17 +20,33 @@ public class EstudianteCarrera {
     @Column
     private int antiguedad;
     @Column
-    private boolean esGraduado;
+    private int inscripcion;
+    @Column
+    private int graduacion;
 
-    public EstudianteCarrera(Carrera idCarrera, Estudiante idEstudiante, int antiguedad, boolean esGraduado) {
+    public EstudianteCarrera(Carrera idCarrera,Estudiante idEstudiante,CarreraEstudianteKey eck,int antiguedad,int inscripcion,int graduacion){
         this.carrera = idCarrera;
         this.estudiante = idEstudiante;
+        this.id = eck;
         this.antiguedad = antiguedad;
-        this.esGraduado = esGraduado;
+        this.inscripcion = inscripcion;
+        this.graduacion = graduacion;
     }
 
     public EstudianteCarrera() {
 
+    }
+
+    public CarreraEstudianteKey getId() {
+        return id;
+    }
+
+    public Carrera getCarrera() {
+        return carrera;
+    }
+
+    public Estudiante getEstudiante() {
+        return estudiante;
     }
 
     public int getAntiguedad() {
@@ -39,13 +55,5 @@ public class EstudianteCarrera {
 
     public void setAntiguedad(int antiguedad) {
         this.antiguedad = antiguedad;
-    }
-
-    public boolean isEsGraduado() {
-        return esGraduado;
-    }
-
-    public void setEsGraduado(boolean esGraduado) {
-        this.esGraduado = esGraduado;
     }
 }

@@ -9,6 +9,7 @@
         <class>main.Ejercicio_Integrador2.Modelo.Estudiante</class>
         <class>main.Ejercicio_Integrador2.Modelo.Carrera</class>
         <class>main.Ejercicio_Integrador2.Modelo.EstudianteCarrera</class>
+        <class>main.Ejercicio_Integrador2.DTO.EstudianteDTO</class>
 
 
 

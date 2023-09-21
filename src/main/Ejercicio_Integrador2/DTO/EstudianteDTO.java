@@ -1,12 +1,13 @@
 package main.Ejercicio_Integrador2.DTO;
 
 import main.Ejercicio_Integrador2.Modelo.Carrera;
+import main.Ejercicio_Integrador2.Modelo.EstudianteCarrera;
 
 import java.util.List;
 
 public class EstudianteDTO {
 
-    private int numeroDeLibretaUniversitaria;
+    private int dni;
 
     private String nombreCompleto;
 
@@ -14,27 +15,27 @@ public class EstudianteDTO {
 
     private List<String> carreras;
 
-    public EstudianteDTO(int numeroDeLibretaUniversitaria, String nombreCompleto, int edad, List<String> carreras) {
-        this.numeroDeLibretaUniversitaria = numeroDeLibretaUniversitaria;
+    public EstudianteDTO(int dni, String nombreCompleto, int edad, List<String> carreras) {
+        this.dni = dni;
         this.nombreCompleto = nombreCompleto;
         this.edad = edad;
         this.carreras = carreras;
     }
 
-    public EstudianteDTO(int numeroDeLibretaUniversitaria, String nombreCompleto, int edad) {
-        this.numeroDeLibretaUniversitaria = numeroDeLibretaUniversitaria;
+    public EstudianteDTO(int dni, String nombreCompleto, int edad) {
+        this.dni = dni;
         this.nombreCompleto = nombreCompleto;
         this.edad = edad;
     }
 
 
 
-    public int getNumeroDeLibretaUniversitaria() {
-        return numeroDeLibretaUniversitaria;
+    public int getDni() {
+        return dni;
     }
 
-    public void setNumeroDeLibretaUniversitaria(int numeroDeLibretaUniversitaria) {
-        this.numeroDeLibretaUniversitaria = numeroDeLibretaUniversitaria;
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public String getNombreCompleto() {
@@ -64,7 +65,7 @@ public class EstudianteDTO {
     @Override
     public String toString() {
         return "EstudianteDTO{" +
-                "numeroDeLibretaUniversitaria=" + numeroDeLibretaUniversitaria +
+                "numeroDeLibretaUniversitaria=" + dni +
                 ", nombreCompleto='" + nombreCompleto + '\'' +
                 ", edad=" + edad +
                 ", carreras=" + carreras +

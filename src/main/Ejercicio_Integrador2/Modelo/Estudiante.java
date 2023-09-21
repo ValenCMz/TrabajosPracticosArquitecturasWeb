@@ -109,4 +109,8 @@ public class Estudiante {
     public void setCarreras(List<EstudianteCarrera> carreras) {
         this.carreras = carreras;
     }
+
+    public void addCarrera(EstudianteCarrera ec){
+        this.carreras.add(ec);
+    }
 }

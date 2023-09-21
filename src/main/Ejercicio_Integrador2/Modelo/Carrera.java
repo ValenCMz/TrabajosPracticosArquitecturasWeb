@@ -40,4 +40,7 @@ public class Carrera {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    public void addCarrera(EstudianteCarrera ec){
+        this.estudiantes.add(ec);
+    }
 }

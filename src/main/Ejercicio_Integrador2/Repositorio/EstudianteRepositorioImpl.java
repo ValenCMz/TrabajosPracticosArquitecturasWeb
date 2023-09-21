@@ -1,8 +1,8 @@
 package main.Ejercicio_Integrador2.Repositorio;
 
 import main.Ejercicio_Integrador2.DTO.EstudianteDTO;
-import main.Ejercicio_Integrador2.Modelo.Carrera;
 import main.Ejercicio_Integrador2.Modelo.Estudiante;
+import main.Ejercicio_Integrador2.Modelo.EstudianteCarrera;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -52,20 +52,9 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
 
     @Override
     public List<EstudianteDTO> getEstudiantesDTOOrdenados() {
-        List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e ORDER BY e.apellido",Estudiante.class).getResultList();
-        List<EstudianteDTO>toReturn = new ArrayList<>();
-        List<String>carreras = new ArrayList<>();
-        for(Estudiante e :estudiantes){
-           // for(Carrera c : e.getCarreras()){
-           //     carreras.add(c.getNombre());
-            //}
-        }
-
-        for(Estudiante e : estudiantes) {
-            toReturn.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre() + e.getApellido(),e.getEdad(),carreras));
-        }
-
-        return toReturn;
+        //"SELECT NEW com.example.dto.EstudianteDTO(e.id, e.nombre, NEW com.example.dto.CarreraDTO(c.id, c.nombre)) FROM Estudiante e JOIN e.estudianteCarreras ec JOIN ec.carrera c"
+        List<EstudianteDTO> estudiantes = em.createQuery("SELECT EstudianteDTO(e.numeroDeDocumento,e.nombre,e.edad) FROM Estudiante e",EstudianteDTO.class).getResultList();
+        return estudiantes;
     }
 
     @Override
@@ -76,7 +65,7 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
           //  carreras.add(c.getNombre());
         //}
 
-        return new EstudianteDTO(estudiante.getNumeroDeLibretaUniversitaria(),estudiante.getNombre() + " " +estudiante.getApellido(), estudiante.getEdad(),carreras);
+        return new EstudianteDTO(estudiante.getNumeroDeLibretaUniversitaria(),estudiante.getNombre() + " " +estudiante.getApellido(), estudiante.getEdad());
     }
 
     @Override
@@ -91,7 +80,7 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
         }
 
         for(Estudiante e : estudiantes) {
-            toReturn.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre() + e.getApellido(),e.getEdad(),carreras));
+            toReturn.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre() + e.getApellido(),e.getEdad()));
         }
 
         return toReturn;
