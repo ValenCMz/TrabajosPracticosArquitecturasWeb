@@ -24,7 +24,7 @@ public class EstudianteCarrera {
     @Column
     private int graduacion;
 
-    public EstudianteCarrera(Carrera idCarrera,Estudiante idEstudiante,CarreraEstudianteKey eck,int antiguedad,int inscripcion,int graduacion){
+    public EstudianteCarrera(Carrera idCarrera,Estudiante idEstudiante,CarreraEstudianteKey eck,int inscripcion,int graduacion,int antiguedad){
         this.carrera = idCarrera;
         this.estudiante = idEstudiante;
         this.id = eck;
