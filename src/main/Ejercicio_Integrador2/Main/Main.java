@@ -20,7 +20,8 @@ public class Main {
         CarreraRepositorioImpl carreraRepositorio = Factory.getCarreraRepositorio();
         EstudianteCarreraRepositorioImpl estudianteCarreraRepositorio = Factory.getEstudianteCarreraRepositorio();
 
-        /*CSVParser parser = null;
+/*
+       CSVParser parser = null;
         try {
             parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/carreras.csv"));
         } catch (IOException e) {
@@ -45,14 +46,17 @@ public class Main {
         }
         for (CSVRecord row: parser){
             estudianteCarreraRepositorio.addEstudianteCarrera(Integer.valueOf(row.get("id_estudiante")), Integer.valueOf(row.get("id_carrera")), Integer.valueOf(row.get("inscripcion")), Integer.valueOf(row.get("graduacion")),Integer.valueOf(row.get("antiguedad")));
-        }*/
+        }
 
-        System.out.println(estudianteRepositorio.getEstudiantesDTOOrdenados());
-        /*System.out.println(estudianteRepositorio.getEstudianteDTOByNumeroDeLibreta(1));
-        System.out.println(estudianteRepositorio.getEstudiantesPorGenero('M'));
+ */
 
-        System.out.println(carreraRepositorio.getCarrerasConEstudiantesOrdenadosPorCantidadDeInscriptos());
-        System.out.println(estudianteRepositorio.getEstudiantesPorCarreraPorCiudad(1,"asdas"));*/
+
+
+        System.out.println(estudianteRepositorio.getEstudiantesDTOOrdenadosPorApellido());
+        System.out.println(estudianteRepositorio.getEstudianteDTOByNumeroDeLibreta(250020));
+        System.out.println(estudianteRepositorio.getEstudiantesPorGenero("Male"));
+        System.out.println(carreraRepositorio.getCarrerasConInscriptos());
+        System.out.println(estudianteRepositorio.getEstudiantesPorCarreraPorCiudad(1,"Paquera"));
 
 
         em.close();

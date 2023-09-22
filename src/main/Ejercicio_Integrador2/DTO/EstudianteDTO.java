@@ -7,68 +7,30 @@ import java.util.List;
 
 public class EstudianteDTO {
 
-    private int dni;
+    private int numeroDeDocumento;
 
     private String nombreCompleto;
 
-    private int edad;
+    private int numeroDeLibretaUniversitaria;
 
-    private List<String> carreras;
+    private String genero;
 
-    public EstudianteDTO(int dni, String nombreCompleto, int edad, List<String> carreras) {
-        this.dni = dni;
+    public EstudianteDTO(int numeroDeDocumento, String nombreCompleto, int numeroDeLibretaUniversitaria, String genero) {
+        this.numeroDeDocumento = numeroDeDocumento;
         this.nombreCompleto = nombreCompleto;
-        this.edad = edad;
-        this.carreras = carreras;
+
+        this.numeroDeLibretaUniversitaria = numeroDeLibretaUniversitaria;
+        this.genero = genero;
     }
 
-    public EstudianteDTO(int dni, String nombreCompleto, int edad) {
-        this.dni = dni;
-        this.nombreCompleto = nombreCompleto;
-        this.edad = edad;
-    }
-
-
-
-    public int getDni() {
-        return dni;
-    }
-
-    public void setDni(int dni) {
-        this.dni = dni;
-    }
-
-    public String getNombreCompleto() {
-        return nombreCompleto;
-    }
-
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public List<String> getCarreras() {
-        return carreras;
-    }
-
-    public void setCarreras(List<String> carreras) {
-        this.carreras = carreras;
-    }
 
     @Override
     public String toString() {
         return "EstudianteDTO{" +
-                "numeroDeLibretaUniversitaria=" + dni +
-                ", nombreCompleto='" + nombreCompleto + '\'' +
-                ", edad=" + edad +
-                ", carreras=" + carreras +
-                '}';
+                "numeroDeDocumento=" + numeroDeDocumento +
+                ", nombreCompleto='" + nombreCompleto  + '\'' +
+                ", numeroDeLibretaUniversitaria=" + numeroDeLibretaUniversitaria +
+                ", genero='" + genero + '\'' +
+                '}' + "\n";
     }
 }

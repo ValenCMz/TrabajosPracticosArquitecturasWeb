@@ -8,5 +8,5 @@ import java.util.List;
 public interface CarreraRepositorio {
     public void addCarrera(Carrera c);
 
-    public List<CarreraDTO>getCarrerasConEstudiantesOrdenadosPorCantidadDeInscriptos();
+    public List<CarreraDTO>getCarrerasConInscriptos();
 }

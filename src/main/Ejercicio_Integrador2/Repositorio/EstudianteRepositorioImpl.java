@@ -1,6 +1,7 @@
 package main.Ejercicio_Integrador2.Repositorio;
 
 import main.Ejercicio_Integrador2.DTO.EstudianteDTO;
+import main.Ejercicio_Integrador2.DTO.EstudiantePorCarreraDTO;
 import main.Ejercicio_Integrador2.Modelo.Estudiante;
 import main.Ejercicio_Integrador2.Modelo.EstudianteCarrera;
 import org.springframework.stereotype.Repository;
@@ -33,76 +34,25 @@ public class EstudianteRepositorioImpl implements EstudianteRepositorio{
         return em.find(Estudiante.class,id);
     }
 
-    /*@Override
-    @Transactional
-    public void matricularEstudianteACarrera(int estudianteId, int carreraId) {
-        Estudiante estudiante = this.getEstudianteById(estudianteId);
-        Carrera carrera = em.find(Carrera.class, carreraId);
-
-        if(estudiante!=null && carrera!=null){
-            estudiante.getCarreras().add(carrera);
-            carrera.getEstudiantes().add(estudiante);
-            em.getTransaction().begin();
-            em.persist(estudiante);
-            em.persist(carrera);
-            em.getTransaction().commit();
-        }
-    }*/
-
-
     @Override
-    public List<EstudianteDTO> getEstudiantesDTOOrdenados() {
-        //"SELECT NEW com.example.dto.EstudianteDTO(e.id, e.nombre, NEW com.example.dto.CarreraDTO(c.id, c.nombre)) FROM Estudiante e JOIN e.estudianteCarreras ec JOIN ec.carrera c"
-        List<EstudianteDTO> estudiantes = em.createQuery("SELECT EstudianteDTO(e.numeroDeDocumento,e.nombre,e.edad) FROM Estudiante e",EstudianteDTO.class).getResultList();
-        return estudiantes;
+    public List<EstudianteDTO> getEstudiantesDTOOrdenadosPorApellido() {
+        return em.createQuery("SELECT NEW main.Ejercicio_Integrador2.DTO.EstudianteDTO(e.numeroDeDocumento, concat(e.nombre,' ', e.apellido) , e.numeroDeLibretaUniversitaria,e.genero) FROM Estudiante e ORDER BY e.apellido",EstudianteDTO.class).getResultList();
     }
 
     @Override
     public EstudianteDTO getEstudianteDTOByNumeroDeLibreta(int libreta) {
-        Estudiante estudiante = em.find(Estudiante.class,libreta);
-        List<String>carreras = new ArrayList<>();
-        //for(Carrera c : estudiante.getCarreras()){
-          //  carreras.add(c.getNombre());
-        //}
-
-        return new EstudianteDTO(estudiante.getNumeroDeLibretaUniversitaria(),estudiante.getNombre() + " " +estudiante.getApellido(), estudiante.getEdad());
+        return em.createQuery("SELECT NEW main.Ejercicio_Integrador2.DTO.EstudianteDTO(e.numeroDeDocumento, concat(e.nombre,' ', e.apellido) , e.numeroDeLibretaUniversitaria,e.genero) FROM Estudiante e WHERE e.numeroDeLibretaUniversitaria = :nroLu",EstudianteDTO.class).setParameter("nroLu",libreta).getSingleResult();
     }
 
     @Override
-    public List<EstudianteDTO> getEstudiantesPorGenero(char genero) {
-        List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e WHERE e.genero = :genero",Estudiante.class).setParameter("genero",genero).getResultList();
-        List<EstudianteDTO>toReturn = new ArrayList<>();
-        List<String>carreras = new ArrayList<>();
-        for(Estudiante e :estudiantes){
-            //for(Carrera c : e.getCarreras()){
-              //  carreras.add(c.getNombre());
-            //}
-        }
-
-        for(Estudiante e : estudiantes) {
-            toReturn.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre() + e.getApellido(),e.getEdad()));
-        }
-
-        return toReturn;
+    public List<EstudianteDTO> getEstudiantesPorGenero(String genero) {
+        return em.createQuery("SELECT NEW main.Ejercicio_Integrador2.DTO.EstudianteDTO(e.numeroDeDocumento, concat(e.nombre,' ', e.apellido) , e.numeroDeLibretaUniversitaria,e.genero) FROM Estudiante e WHERE e.genero LIKE :genero",EstudianteDTO.class).setParameter("genero",genero).getResultList();
     }
 
     @Override
-    public List<EstudianteDTO> getEstudiantesPorCarreraPorCiudad(int id_carrera, String ciudad) {
-        //List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e JOIN e.carreras e2 WHERE e.ciudadDeResidencia.nombre = :ciudad AND e2.id = :id_carrera",Estudiante.class).setParameter("ciudad",ciudad).setParameter("id_carrera",id_carrera).getResultList();
-        List<EstudianteDTO>toReturn = new ArrayList<>();
-        List<String>carreras = new ArrayList<>();
-        //for(Estudiante e :estudiantes){
-            //for(Carrera c : e.getCarreras()){
-              //  carreras.add(c.getNombre());
-            //}
-       // }
+    public List<EstudiantePorCarreraDTO> getEstudiantesPorCarreraPorCiudad(int id_carrera, String ciudad) {
 
-        //for(Estudiante e : estudiantes) {
-          //  toReturn.add(new EstudianteDTO(e.getNumeroDeLibretaUniversitaria(),e.getNombre() + e.getApellido(),e.getEdad(),carreras));
-        //}
-
-        return toReturn;
-
+        return em.createQuery("SELECT NEW main.Ejercicio_Integrador2.DTO.EstudiantePorCarreraDTO(e.id, concat(e.nombre, ' ',e.apellido), e2.carrera.nombre, e.ciudadDeResidencia) FROM Estudiante e JOIN e.carreras e2 WHERE e.ciudadDeResidencia LIKE :ciudad AND e2.carrera.id = :id_carrera", EstudiantePorCarreraDTO.class).setParameter("ciudad",ciudad).setParameter("id_carrera",id_carrera).getResultList();
     }
 
 

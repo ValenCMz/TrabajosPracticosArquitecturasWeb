@@ -7,6 +7,10 @@ import java.util.List;
 
 @Entity
 public class Estudiante {
+
+    @Id
+    private int numeroDeDocumento;
+
     @Column
     private int numeroDeLibretaUniversitaria;
 
@@ -21,9 +25,6 @@ public class Estudiante {
 
     @Column
     private String genero;
-
-    @Id
-    private int numeroDeDocumento;
 
     private String ciudadDeResidencia;
 
