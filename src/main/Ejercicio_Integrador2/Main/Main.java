@@ -21,7 +21,11 @@ public class Main {
         EstudianteCarreraRepositorioImpl estudianteCarreraRepositorio = Factory.getEstudianteCarreraRepositorio();
 
 
-        /*
+
+/*
+
+CODIGO PARA CARGAR DATOS EN LA BASE DE DATOS
+
        CSVParser parser = null;
         try {
             parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/carreras.csv"));
@@ -49,20 +53,14 @@ public class Main {
             estudianteCarreraRepositorio.addEstudianteCarrera(Integer.valueOf(row.get("id_estudiante")), Integer.valueOf(row.get("id_carrera")), Integer.valueOf(row.get("inscripcion")), Integer.valueOf(row.get("graduacion")),Integer.valueOf(row.get("antiguedad")));
         }
 
-
-         */
-
-
-       
-
-/*
-        System.out.println(estudianteRepositorio.getEstudiantesDTOOrdenadosPorApellido());
-        System.out.println(estudianteRepositorio.getEstudianteDTOByNumeroDeLibreta(250020));
-        System.out.println(estudianteRepositorio.getEstudiantesPorGenero("Male"));
-        System.out.println(carreraRepositorio.getCarrerasConInscriptos());
-        System.out.println(estudianteRepositorio.getEstudiantesPorCarreraPorCiudad(1,"Paquera"));
  */
-        System.out.println(carreraRepositorio.getCarrerasReporte());
+
+        System.out.println("Ejercicio 2.c)" + "\n" + estudianteRepositorio.getEstudiantesDTOOrdenadosPorApellido());
+        System.out.println("Ejercicio 2.d)"+ "\n" +estudianteRepositorio.getEstudianteDTOByNumeroDeLibreta(250020));
+        System.out.println("Ejercicio 2.e)"+ "\n" +estudianteRepositorio.getEstudiantesPorGenero("Male"));
+        System.out.println("Ejercicio 2.f)"+ "\n" +carreraRepositorio.getCarrerasConInscriptos());
+        System.out.println("Ejercicio 2.g)"+ "\n" +estudianteRepositorio.getEstudiantesPorCarreraPorCiudad(1,"Paquera"));
+        System.out.println("Ejercicio 3)"+ "\n" +carreraRepositorio.getCarrerasReporte());
 
 
         em.close();

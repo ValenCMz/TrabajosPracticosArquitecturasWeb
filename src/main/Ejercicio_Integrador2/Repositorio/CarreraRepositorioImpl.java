@@ -2,16 +2,15 @@ package main.Ejercicio_Integrador2.Repositorio;
 
 import main.Ejercicio_Integrador2.DTO.CarreraDTO;
 import main.Ejercicio_Integrador2.DTO.CarreraReporteDTO;
-import main.Ejercicio_Integrador2.DTO.EstudianteDTO;
+
 import main.Ejercicio_Integrador2.Modelo.Carrera;
-import main.Ejercicio_Integrador2.Modelo.Estudiante;
+
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+
 import javax.transaction.Transactional;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Repository
