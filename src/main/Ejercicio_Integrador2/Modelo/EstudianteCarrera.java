@@ -56,4 +56,20 @@ public class EstudianteCarrera {
     public void setAntiguedad(int antiguedad) {
         this.antiguedad = antiguedad;
     }
+
+    public int getInscripcion() {
+        return inscripcion;
+    }
+
+    public void setInscripcion(int inscripcion) {
+        this.inscripcion = inscripcion;
+    }
+
+    public int getGraduacion() {
+        return graduacion;
+    }
+
+    public void setGraduacion(int graduacion) {
+        this.graduacion = graduacion;
+    }
 }

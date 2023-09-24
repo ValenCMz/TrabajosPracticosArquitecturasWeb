@@ -21,7 +21,7 @@ public class Main {
         EstudianteCarreraRepositorioImpl estudianteCarreraRepositorio = Factory.getEstudianteCarreraRepositorio();
 
 
-         /*
+        /*
        CSVParser parser = null;
         try {
             parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("src/main/carreras.csv"));
@@ -50,8 +50,10 @@ public class Main {
         }
 
 
+         */
 
-          */
+
+       
 
 /*
         System.out.println(estudianteRepositorio.getEstudiantesDTOOrdenadosPorApellido());
